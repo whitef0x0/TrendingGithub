@@ -101,7 +101,7 @@ func (client *Twitter) SetupFollowNewPeopleScheduling(d time.Duration) {
 }
 
 // FollowNewPerson will follow a new person on twitter to raise the attraction for the bot.
-// We will follow a new person who follow on random follower of @TrendingGithub
+// We will follow a new person who follow on random follower of @TrendingGitlab
 // Only persons who don`t have a relationship to the bot will be followed.
 func (client *Twitter) FollowNewPerson() error {
 	// Get own followers
@@ -112,7 +112,7 @@ func (client *Twitter) FollowNewPerson() error {
 
 	// We loop here, because we want to follow one person.
 	// If we choose a random person it can be that we choose a person
-	// that follows @TrendingGithub already.
+	// that follows @TrendingGitlab already.
 	// We want to attract new persons ;)
 	for {
 		// Choose a random follower
@@ -129,7 +129,7 @@ func (client *Twitter) FollowNewPerson() error {
 		// Choose a random follower (again) from the random follower chosen before
 		randomNumber = rand.Intn(len(c.Ids))
 
-		// Get friendship details of @TrendingGithub and the chosen person
+		// Get friendship details of @TrendingGitlab and the chosen person
 		v = url.Values{}
 		v.Add("user_id", strconv.FormatInt(c.Ids[randomNumber], 10))
 		friendships, err := client.API.GetFriendshipsLookup(v)
@@ -137,7 +137,7 @@ func (client *Twitter) FollowNewPerson() error {
 			return err
 		}
 
-		// Test if @TrendingGithub has a relationship to the new user.
+		// Test if @TrendingGitlab has a relationship to the new user.
 		shouldIFollow := client.isThereARelationship(friendships)
 
 		// If we got a relationship, we will repeat the process ...
@@ -152,7 +152,7 @@ func (client *Twitter) FollowNewPerson() error {
 	}
 }
 
-// isThereARelationship will test if @TrendingGithub has a relationship to the new user.
+// isThereARelationship will test if @TrendingGitlab has a relationship to the new user.
 // Only if there is no relationship ("none").
 // Default wise we assume that we got a relationship already
 // See https://dev.twitter.com/rest/reference/get/friendships/lookup

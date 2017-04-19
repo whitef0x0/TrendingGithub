@@ -1,5 +1,5 @@
 {
-	"ImportPath": "github.com/whitef0x0/TrendingGithub",
+	"ImportPath": "github.com/whitef0x0/TrendingGitlab",
 	"GoVersion": "go1.7",
 	"GodepVersion": "v75",
 	"Deps": [

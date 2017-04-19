@@ -9,7 +9,7 @@ A twitter bot (**[@TrendingGitlab](https://twitter.com/TrendingGitlab)**) to twe
 
 > Follow us at **[@TrendingGitlab](https://twitter.com/TrendingGitlab)**.
 
-[![@TrendingGitlab twitter account](./img/TrendingGithub.png "@TrendingGithub twitter account")](https://twitter.com/TrendingGitlab)
+[![@TrendingGitlab twitter account](./img/TrendingGitlab.png "@TrendingGitlab twitter account")](https://twitter.com/TrendingGitlab)
 
 **Important:** This is not an official GitLab or Twitter product.
 
@@ -24,50 +24,50 @@ A twitter bot (**[@TrendingGitlab](https://twitter.com/TrendingGitlab)**) to twe
 
 ## Installation
 
-1. Download the [latest release](https://github.com/whitef0x0/TrendingGithub/releases/latest)
+1. Download the [latest release](https://github.com/whitef0x0/TrendingGitlab/releases/latest)
 2. Extract the archive (zip / tar.gz)
-3. Start the bot via `./TrendingGithub -debug`
+3. Start the bot via `./TrendingGitlab -debug`
 
 For linux this can look like:
 
 ```sh
-curl -L  https://github.com/whitef0x0/TrendingGithub/releases/download/v0.4.0/TrendingGithub-v0.4.0-linux-amd64.tar.gz -o TrendingGithub-v0.4.0-linux-amd64.tar.gz
-tar xzvf TrendingGithub-v0.4.0-linux-amd64.tar.gz
-cd TrendingGithub-v0.4.0-linux-amd64
-./TrendingGithub -debug
+curl -L  https://github.com/whitef0x0/TrendingGitlab/releases/download/v0.4.0/TrendingGitlab-v0.4.0-linux-amd64.tar.gz -o TrendingGitlab-v0.4.0-linux-amd64.tar.gz
+tar xzvf TrendingGitlab-v0.4.0-linux-amd64.tar.gz
+cd TrendingGitlab-v0.4.0-linux-amd64
+./TrendingGitlab -debug
 ```
 
 ## Usage
 
 ```
-$ ./TrendingGithub -help
-Usage of ./TrendingGithub:
+$ ./TrendingGitlab -help
+Usage of ./TrendingGitlab:
   -debug
-    	Outputs the tweet instead of tweet it (useful for development). Env var: TRENDINGGITHUB_DEBUG
+    	Outputs the tweet instead of tweet it (useful for development). Env var: TrendingGitlab_DEBUG
   -expvar-port int
-    	Port which will be used for the expvar TCP server. Env var: TRENDINGGITHUB_EXPVAR_PORT (default 8123)
+    	Port which will be used for the expvar TCP server. Env var: TrendingGitlab_EXPVAR_PORT (default 8123)
   -storage-auth string
-    	Storage Auth (e.g. myPassword or <empty>). Env var: TRENDINGGITHUB_STORAGE_AUTH
+    	Storage Auth (e.g. myPassword or <empty>). Env var: TrendingGitlab_STORAGE_AUTH
   -storage-url string
-    	Storage URL (e.g. 1.2.3.4:6379 or :6379). Env var: TRENDINGGITHUB_STORAGE_URL (default ":6379")
+    	Storage URL (e.g. 1.2.3.4:6379 or :6379). Env var: TrendingGitlab_STORAGE_URL (default ":6379")
   -twitter-access-token string
-    	Twitter-API: Access token. Env var: TRENDINGGITHUB_TWITTER_ACCESS_TOKEN
+    	Twitter-API: Access token. Env var: TrendingGitlab_TWITTER_ACCESS_TOKEN
   -twitter-access-token-secret string
-    	Twitter-API: Access token secret. Env var: TRENDINGGITHUB_TWITTER_ACCESS_TOKEN_SECRET
+    	Twitter-API: Access token secret. Env var: TrendingGitlab_TWITTER_ACCESS_TOKEN_SECRET
   -twitter-conf-refresh-time duration
-    	Twitter: Time interval to refresh the configuration of twitter (e.g. char length for short url). Env var: TRENDINGGITHUB_TWITTER_CONF_REFRESH_TIME (default 24h0m0s)
+    	Twitter: Time interval to refresh the configuration of twitter (e.g. char length for short url). Env var: TrendingGitlab_TWITTER_CONF_REFRESH_TIME (default 24h0m0s)
   -twitter-consumer-key string
-    	Twitter-API: Consumer key. Env var: TRENDINGGITHUB_TWITTER_CONSUMER_KEY
+    	Twitter-API: Consumer key. Env var: TrendingGitlab_TWITTER_CONSUMER_KEY
   -twitter-consumer-secret string
-    	Twitter-API: Consumer secret. Env var: TRENDINGGITHUB_TWITTER_CONSUMER_SECRET
+    	Twitter-API: Consumer secret. Env var: TrendingGitlab_TWITTER_CONSUMER_SECRET
   -twitter-follow-new-person
-    	Twitter: Follows a friend of one of our followers. Env var: TRENDINGGITHUB_TWITTER_FOLLOW_NEW_PERSON
+    	Twitter: Follows a friend of one of our followers. Env var: TrendingGitlab_TWITTER_FOLLOW_NEW_PERSON
   -twitter-follow-new-person-time duration
-    	Growth hack: Time interval to search for a new person to follow. Env var: TRENDINGGITHUB_TWITTER_FOLLOW_NEW_PERSON_TIME (default 45m0s)
+    	Growth hack: Time interval to search for a new person to follow. Env var: TrendingGitlab_TWITTER_FOLLOW_NEW_PERSON_TIME (default 45m0s)
   -twitter-tweet-time duration
-    	Twitter: Time interval to search a new project and tweet it. Env var: TRENDINGGITHUB_TWITTER_TWEET_TIME (default 30m0s)
+    	Twitter: Time interval to search a new project and tweet it. Env var: TrendingGitlab_TWITTER_TWEET_TIME (default 30m0s)
   -version
-    	Outputs the version number and exit. Env var: TRENDINGGITHUB_VERSION
+    	Outputs the version number and exit. Env var: TrendingGitlab_VERSION
 ```
 
 **Every parameter can be set by environment variable as well.**
