@@ -21,7 +21,7 @@ func GetProjectDetails(pid int) (*Project, error) {
 	}
 
 	r := &Project{
-		StarCount: repository.StarCount,
+		StarCount: project.StarCount,
 	}
 	return r, err
 }
