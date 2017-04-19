@@ -22,7 +22,7 @@
 		},
 		{
 			"ImportPath": "github.com/whitef0x0/go-trending",
-			"Rev": "41f32fdb94e7e3511503d2c8bab019c9e353fe81"
+			"Rev": "3dcd079ca1352344567835a03639c9281097e2de"
 		},
 		{
 			"ImportPath": "github.com/azr/backoff",

@@ -5,10 +5,12 @@ import (
 	"fmt"
 	"log"
 	"time"
-
+    "github.com/joho/godotenv"
 	"github.com/whitef0x0/TrendingGithub/flags"
 	"github.com/whitef0x0/TrendingGithub/storage"
 	"github.com/whitef0x0/TrendingGithub/twitter"
+	"github.com/whitef0x0/TrendingGithub/expvar"
+	"github.com/whitef0x0/TrendingGithub/tweets"
 )
 
 const (
@@ -17,6 +19,11 @@ const (
 )
 
 func main() {
+	envErr := godotenv.Load()
+	if envErr != nil {
+		log.Fatal("Error loading .env file")
+	}
+
 	var (
 		// Twitter
 		twitterConsumerKey       = flags.String("twitter-consumer-key", "TRENDINGGITHUB_TWITTER_CONSUMER_KEY", "", "Twitter-API: Consumer key. Env var: TRENDINGGITHUB_TWITTER_CONSUMER_KEY")
@@ -26,7 +33,7 @@ func main() {
 		twitterFollowNewPerson   = flags.Bool("twitter-follow-new-person", "TRENDINGGITHUB_TWITTER_FOLLOW_NEW_PERSON", false, "Twitter: Follows a friend of one of our followers. Env var: TRENDINGGITHUB_TWITTER_FOLLOW_NEW_PERSON")
 
 		// Timings
-		tweetTime                = flags.Duration("twitter-tweet-time", "TRENDINGGITHUB_TWITTER_TWEET_TIME", 30*time.Minute, "Twitter: Time interval to search a new project and tweet it. Env var: TRENDINGGITHUB_TWITTER_TWEET_TIME")
+		tweetTime                = flags.Duration("twitter-tweet-time", "TRENDINGGITHUB_TWITTER_TWEET_TIME", 5*time.Second, "Twitter: Time interval to search a new project and tweet it. Env var: TRENDINGGITHUB_TWITTER_TWEET_TIME")
 		configurationRefreshTime = flags.Duration("twitter-conf-refresh-time", "TRENDINGGITHUB_TWITTER_CONF_REFRESH_TIME", 24*time.Hour, "Twitter: Time interval to refresh the configuration of twitter (e.g. char length for short url). Env var: TRENDINGGITHUB_TWITTER_CONF_REFRESH_TIME")
 		followNewPersonTime      = flags.Duration("twitter-follow-new-person-time", "TRENDINGGITHUB_TWITTER_FOLLOW_NEW_PERSON_TIME", 45*time.Minute, "Growth hack: Time interval to search for a new person to follow. Env var: TRENDINGGITHUB_TWITTER_FOLLOW_NEW_PERSON_TIME")
 
@@ -46,9 +53,9 @@ func main() {
 		return
 	}
 
-	log.Println("Hey, nice to meet you. My name is @TrendingGithub. Lets get ready to tweet some trending content!")
+	log.Println("Hey, nice to meet you. My name is @GitlabTrending. Lets get ready to tweet some trending content!")
 	defer log.Println("Nice sesssion. A lot of knowledge was tweeted. Good work and see you next time!")
-
+	
 	// Prepare the twitter client
 	twitterClient := twitter.NewClient(*twitterConsumerKey, *twitterConsumerSecret, *twitterAccessToken, *twitterAccessTokenSecret, *debugMode)
 
@@ -76,12 +83,12 @@ func main() {
 	log.Println("Storage backend initialisation success")
 
 	// Start the exvar server
-	err := StartExpvarServer(*expVarPort)
+	err := expvar_server.StartExpvarServer(*expVarPort)
 	if err != nil {
 		log.Fatalf("Expvar initialisation failed: %s", err)
 	}
 	log.Println("Expvar initialisation started ...")
 
 	// Let the party begin
-	StartTweeting(twitterClient, storageBackend, *tweetTime)
+	tweets.StartTweeting(twitterClient, storageBackend, *tweetTime)
 }

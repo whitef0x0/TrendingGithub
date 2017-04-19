@@ -23,7 +23,7 @@ Some API methods have optional parameters that can be passed. For example:
 	client := github.NewClient(nil)
 
 	// list public repositories for org "github"
-	opt := &github.RepositoryListByOrgOptions{Type: "public"}
+	opt := &github.ProjectListByOrgOptions{Type: "public"}
 	repos, _, err := client.Repositories.ListByOrg("github", opt)
 
 The services of a client divide the API into logical chunks and correspond to
@@ -105,7 +105,7 @@ Helper functions have been provided to easily create these pointers for string,
 bool, and int values. For example:
 
 	// create a new private repository named "foo"
-	repo := &github.Repository{
+	repo := &github.Project{
 		Name:    github.String("foo"),
 		Private: github.Bool(true),
 	}
@@ -124,11 +124,11 @@ github.Response struct.
 
 	client := github.NewClient(nil)
 
-	opt := &github.RepositoryListByOrgOptions{
+	opt := &github.ProjectListByOrgOptions{
 		ListOptions: github.ListOptions{PerPage: 10},
 	}
 	// get all pages of results
-	var allRepos []*github.Repository
+	var allRepos []*github.Project
 	for {
 		repos, resp, err := client.Repositories.ListByOrg("github", opt)
 		if err != nil {

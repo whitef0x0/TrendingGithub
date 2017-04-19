@@ -12,10 +12,10 @@ type Project struct {
 }
 
 // GetRepositoryDetails will retrieve details about the repository owner/repo from github.
-func GetProjectDetails(pid int) (*Project, error) {
-	client := gitlab.NewClient(nil)
+func GetProjectDetails(nameSpace string) (*Project, error) {
+	client := gitlab.NewClient(nil, "")
 	client.SetBaseURL("https://gitlab.com/api/v3")
-	project, _, err := client.Projects.GetProject(pid)
+	project, _, err := client.Projects.GetProject(nameSpace)
 	if project == nil {
 		return nil, err
 	}

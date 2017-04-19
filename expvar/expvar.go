@@ -1,4 +1,4 @@
-package main
+package expvar_server
 
 import (
 	_ "expvar"
