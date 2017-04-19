@@ -38,8 +38,8 @@ cd TrendingGitlab-v0.4.0-linux-amd64
 ## Usage
 
 ```
-$ ./TrendingGitlab -help
-Usage of ./TrendingGitlab:
+$ go run main.go
+Usage of go run main.go
   -debug
     	Outputs the tweet instead of tweet it (useful for development). Env var: TrendingGitlab_DEBUG
   -expvar-port int
