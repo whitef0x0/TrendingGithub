@@ -9,8 +9,6 @@ A twitter bot (**[@TrendingGitlab](https://twitter.com/TrendingGitlab)**) to twe
 
 > Follow us at **[@TrendingGitlab](https://twitter.com/TrendingGitlab)**.
 
-[![@TrendingGitlab twitter account](./img/TrendingGitlab.png "@TrendingGitlab twitter account")](https://twitter.com/TrendingGitlab)
-
 **Important:** This is not an official GitLab or Twitter product.
 
 ## Features
