@@ -11,7 +11,7 @@
 #
 
 VER=$1
-PROJ="TrendingGithub"
+PROJ="TrendingGitlab"
 
 if [ -z "$1" ]; then
 	echo "Usage: ${0} VERSION" >> /dev/stderr
@@ -27,7 +27,7 @@ function main {
 		export GOOS=${os}
 		export GOARCH="amd64"
 
-		TARGET="TrendingGithub-${VER}-${GOOS}-${GOARCH}"
+		TARGET="TrendingGitlab-${VER}-${GOOS}-${GOARCH}"
 		mkdir ${TARGET}
 		cp README.md ${TARGET}/README.md
 
@@ -36,7 +36,7 @@ function main {
 			ext=".exe"
 		fi
 
-		go build -o ${TARGET}/TrendingGithub${ext}
+		go build -o ${TARGET}/TrendingGitlab${ext}
 
 		if [ ${GOOS} == "linux" ]; then
 			tar cfz release/${TARGET}.tar.gz ${TARGET}

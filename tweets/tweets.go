@@ -7,10 +7,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/whitef0x0/TrendingGithub/github"
-	"github.com/whitef0x0/TrendingGithub/storage"
-	trendingwrap "github.com/whitef0x0/TrendingGithub/trending"
-	"github.com/whitef0x0/TrendingGithub/twitter"
+	"github.com/whitef0x0/TrendingGitlab/github"
+	"github.com/whitef0x0/TrendingGitlab/storage"
+	trendingwrap "github.com/whitef0x0/TrendingGitlab/trending"
+	"github.com/whitef0x0/TrendingGitlab/twitter"
 	"github.com/whitef0x0/go-trending"
 )
 
@@ -133,7 +133,7 @@ func (ts *TweetSearch) FindProjectWithRandomProjectGenerator(getProject func() (
 
 	// Lets throw an error, when we dont get a project at all
 	// This happened in the past and the bot tweeted nothing.
-	// See https://github.com/whitef0x0/TrendingGithub/issues/12
+	// See https://github.com/whitef0x0/TrendingGitlab/issues/12
 	if projectErr != nil {
 		log.Printf("Error by searching for a new project with random project generator: %s", projectErr)
 	}
@@ -238,9 +238,9 @@ func StartTweeting(twitter *twitter.Twitter, storageBackend storage.Pool, tweetT
 	for tweet := range ts.Channel {
 		// Sometimes it happens that we won`t get a project.
 		// In this situation we try to avoid empty tweets like ...
-		//	* https://twitter.com/TrendingGithub/status/628714326564696064
-		//	* https://twitter.com/TrendingGithub/status/628530032361795584
-		//	* https://twitter.com/TrendingGithub/status/628348405790711808
+		//	* https://twitter.com/TrendingGitlab/status/628714326564696064
+		//	* https://twitter.com/TrendingGitlab/status/628530032361795584
+		//	* https://twitter.com/TrendingGitlab/status/628348405790711808
 		// we will return here
 		// We do this check here and not in tweets.go, because otherwise
 		// a new tweet won`t be scheduled

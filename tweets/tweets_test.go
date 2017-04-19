@@ -4,7 +4,7 @@ import (
 	"net/url"
 	"testing"
 
-	"github.com/whitef0x0/TrendingGithub/github"
+	"github.com/whitef0x0/TrendingGitlab/github"
 	"github.com/whitef0x0/go-trending"
 )
 
@@ -28,10 +28,10 @@ func TestTweets_IsProjectEmpty(t *testing.T) {
 
 func TestTweets_BuildTweet(t *testing.T) {
 	owner := "whitef0x0"
-	repositoryName := "TrendingGithub"
+	repositoryName := "TrendingGitlab"
 	projectName := owner + "/" + repositoryName
-	projectURL, _ := url.Parse("https://github.com/whitef0x0/TrendingGithub")
-	projectDescription := "A twitter bot (@TrendingGithub) to tweet trending repositories and developers from GitHub"
+	projectURL, _ := url.Parse("https://github.com/whitef0x0/TrendingGitlab")
+	projectDescription := "A twitter bot (@TrendingGitlab) to tweet trending repositories and developers from GitHub"
 
 	ts := TweetSearch{
 		URLLength: 24,
@@ -52,41 +52,41 @@ func TestTweets_BuildTweet(t *testing.T) {
 			RepositoryName: "This-Is-A-Long-Project-Name-That-Will-Drop-The-Description-Of-The-Project",
 			Description:    projectDescription + " and more and better and super duper text",
 			URL:            projectURL,
-		}, "SuperDuperOwnerOrOrganisation/This-Is-A-Long-Project-Name-That-Will-Drop-The-Description-Of-The-Project ★123 https://github.com/whitef0x0/TrendingGithub #Go"},
+		}, "SuperDuperOwnerOrOrganisation/This-Is-A-Long-Project-Name-That-Will-Drop-The-Description-Of-The-Project ★123 https://github.com/whitef0x0/TrendingGitlab #Go"},
 		{trending.Project{
 			Name:           projectName + "-cool-super-project",
 			Owner:          owner,
 			RepositoryName: repositoryName + "-cool-super-project",
 			Description:    projectDescription + " and more and better and super duper text",
 			URL:            projectURL,
-		}, "whitef0x0/TrendingGithub-cool-super-project: A twitter bot (@TrendingGithub) to tweet trending... ★123 https://github.com/whitef0x0/TrendingGithub #Go"},
+		}, "whitef0x0/TrendingGitlab-cool-super-project: A twitter bot (@TrendingGitlab) to tweet trending... ★123 https://github.com/whitef0x0/TrendingGitlab #Go"},
 		{trending.Project{
 			Name:           projectName,
 			Owner:          owner,
 			RepositoryName: repositoryName,
 			Description:    projectDescription,
 			URL:            projectURL,
-		}, "whitef0x0/TrendingGithub: A twitter bot (@TrendingGithub) to tweet trending repositories and developers... ★123 https://github.com/whitef0x0/TrendingGithub"},
+		}, "whitef0x0/TrendingGitlab: A twitter bot (@TrendingGitlab) to tweet trending repositories and developers... ★123 https://github.com/whitef0x0/TrendingGitlab"},
 		{trending.Project{
 			Name:           projectName,
 			Owner:          owner,
 			RepositoryName: repositoryName,
 			Description:    "Short description",
 			URL:            projectURL,
-		}, "whitef0x0/TrendingGithub: Short description ★123 https://github.com/whitef0x0/TrendingGithub #GoLang"},
+		}, "whitef0x0/TrendingGitlab: Short description ★123 https://github.com/whitef0x0/TrendingGitlab #GoLang"},
 		{trending.Project{
 			Name:           projectName,
 			Owner:          owner,
 			RepositoryName: repositoryName,
 			Description:    "Project without a URL",
-		}, "whitef0x0/TrendingGithub: Project without a URL ★123 #GoLang"},
+		}, "whitef0x0/TrendingGitlab: Project without a URL ★123 #GoLang"},
 		{trending.Project{
 			Name:           repositoryName + "/" + repositoryName,
 			Owner:          repositoryName,
 			RepositoryName: repositoryName,
 			Description:    projectDescription,
 			URL:            projectURL,
-		}, "TrendingGithub: A twitter bot (@TrendingGithub) to tweet trending repositories and developers from GitHub ★123 https://github.com/whitef0x0/TrendingGithub #Go"},
+		}, "TrendingGitlab: A twitter bot (@TrendingGitlab) to tweet trending repositories and developers from GitHub ★123 https://github.com/whitef0x0/TrendingGitlab #Go"},
 	}
 
 	for _, item := range mock {
