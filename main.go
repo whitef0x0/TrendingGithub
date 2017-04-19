@@ -6,9 +6,9 @@ import (
 	"log"
 	"time"
 
-	"github.com/andygrunwald/TrendingGithub/flags"
-	"github.com/andygrunwald/TrendingGithub/storage"
-	"github.com/andygrunwald/TrendingGithub/twitter"
+	"github.com/whitef0x0/TrendingGithub/flags"
+	"github.com/whitef0x0/TrendingGithub/storage"
+	"github.com/whitef0x0/TrendingGithub/twitter"
 )
 
 const (

@@ -54,7 +54,7 @@ func (t *Trending) GetProjects(time, language string) ([]Project, error) {
 		// Collect project information
 		name := t.getProjectName(s.Find("h3 a").Text())
 
-		// Split name (like "andygrunwald/go-trending") into owner ("andygrunwald") and repository name ("go-trending"")
+		// Split name (like "whitef0x0/go-trending") into owner ("whitef0x0") and repository name ("go-trending"")
 		splittedName := strings.SplitAfterN(name, "/", 2)
 		owner := splittedName[0][:len(splittedName[0])-1]
 		owner = strings.TrimSpace(owner)

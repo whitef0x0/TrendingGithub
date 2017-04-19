@@ -1,9 +1,9 @@
 # [@TrendingGithub](https://twitter.com/TrendingGithub)
 
-[![Build Status](https://travis-ci.org/andygrunwald/TrendingGithub.svg?branch=master)](https://travis-ci.org/andygrunwald/TrendingGithub)
-[![GoDoc](https://godoc.org/github.com/andygrunwald/TrendingGithub?status.svg)](https://godoc.org/github.com/andygrunwald/TrendingGithub)
-[![Coverage Status](https://coveralls.io/repos/andygrunwald/TrendingGithub/badge.svg?branch=master&service=github)](https://coveralls.io/github/andygrunwald/TrendingGithub?branch=master)
-[![Go Report Card](https://goreportcard.com/badge/github.com/andygrunwald/TrendingGithub)](https://goreportcard.com/report/github.com/andygrunwald/TrendingGithub)
+[![Build Status](https://travis-ci.org/whitef0x0/TrendingGithub.svg?branch=master)](https://travis-ci.org/whitef0x0/TrendingGithub)
+[![GoDoc](https://godoc.org/github.com/whitef0x0/TrendingGithub?status.svg)](https://godoc.org/github.com/whitef0x0/TrendingGithub)
+[![Coverage Status](https://coveralls.io/repos/whitef0x0/TrendingGithub/badge.svg?branch=master&service=github)](https://coveralls.io/github/whitef0x0/TrendingGithub?branch=master)
+[![Go Report Card](https://goreportcard.com/badge/github.com/whitef0x0/TrendingGithub)](https://goreportcard.com/report/github.com/whitef0x0/TrendingGithub)
 
 A twitter bot (**[@TrendingGithub](https://twitter.com/TrendingGithub)**) to tweet [trending repositories](https://github.com/trending) and [developers](https://github.com/trending/developers) from GitHub.
 
@@ -24,14 +24,14 @@ A twitter bot (**[@TrendingGithub](https://twitter.com/TrendingGithub)**) to twe
 
 ## Installation
 
-1. Download the [latest release](https://github.com/andygrunwald/TrendingGithub/releases/latest)
+1. Download the [latest release](https://github.com/whitef0x0/TrendingGithub/releases/latest)
 2. Extract the archive (zip / tar.gz)
 3. Start the bot via `./TrendingGithub -debug`
 
 For linux this can look like:
 
 ```sh
-curl -L  https://github.com/andygrunwald/TrendingGithub/releases/download/v0.4.0/TrendingGithub-v0.4.0-linux-amd64.tar.gz -o TrendingGithub-v0.4.0-linux-amd64.tar.gz
+curl -L  https://github.com/whitef0x0/TrendingGithub/releases/download/v0.4.0/TrendingGithub-v0.4.0-linux-amd64.tar.gz -o TrendingGithub-v0.4.0-linux-amd64.tar.gz
 tar xzvf TrendingGithub-v0.4.0-linux-amd64.tar.gz
 cd TrendingGithub-v0.4.0-linux-amd64
 ./TrendingGithub -debug
@@ -111,7 +111,7 @@ This feature can be activated via the `twitter-follow-new-person` flag.
 ## Motivation
 
 I love to discover new tools, new projects, new languages, new coding best practices, new exciting ideas and new people who share the same passion like me.
-[I use twitter a lot](https://twitter.com/andygrunwald) and have little time to check [trending repositories](https://github.com/trending) and [developers](https://github.com/trending/developers) on a daily basis.
+[I use twitter a lot](https://twitter.com/whitef0x0) and have little time to check [trending repositories](https://github.com/trending) and [developers](https://github.com/trending/developers) on a daily basis.
 
 Why not combine both to save time and spread favorite projects and developers via tweets?
 

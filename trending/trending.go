@@ -3,8 +3,7 @@ package trending
 import (
 	"errors"
 	"math/rand"
-
-	"github.com/andygrunwald/go-trending"
+	"github.com/whitef0x0/go-trending"
 )
 
 // TrendingAPI represents the interface to the github.com/trending website

@@ -37,7 +37,7 @@ const (
 //		package main
 //
 //		import (
-//			"github.com/andygrunwald/go-trending"
+//			"github.com/whitef0x0/go-trending"
 //		)
 //
 //		func main() {
@@ -55,13 +55,13 @@ type Trending struct {
 // Project reflects a single trending repository.
 // It provides information as printed on the source website https://github.com/trending.
 type Project struct {
-	// Name is the name of the repository including user / organisation like "andygrunwald/go-trending" or "airbnb/javascript".
+	// Name is the name of the repository including user / organisation like "whitef0x0/go-trending" or "airbnb/javascript".
 	Name string
 
-	// Owner is the name of the user or organisation. "andygrunwald" in "andygrunwald/go-trending" or "airbnb" in "airbnb/javascript".
+	// Owner is the name of the user or organisation. "whitef0x0" in "whitef0x0/go-trending" or "airbnb" in "airbnb/javascript".
 	Owner string
 
-	// RepositoryName is the name of therepository. "go-trending" in "andygrunwald/go-trending" or "javascript" in "airbnb/javascript".
+	// RepositoryName is the name of therepository. "go-trending" in "whitef0x0/go-trending" or "javascript" in "airbnb/javascript".
 	RepositoryName string
 
 	// Description is the description of the repository like "JavaScript Style Guide" (for "airbnb/javascript").

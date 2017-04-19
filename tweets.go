@@ -7,11 +7,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/andygrunwald/TrendingGithub/github"
-	"github.com/andygrunwald/TrendingGithub/storage"
-	trendingwrap "github.com/andygrunwald/TrendingGithub/trending"
-	"github.com/andygrunwald/TrendingGithub/twitter"
-	"github.com/andygrunwald/go-trending"
+	"github.com/whitef0x0/TrendingGithub/github"
+	"github.com/whitef0x0/TrendingGithub/storage"
+	trendingwrap "github.com/whitef0x0/TrendingGithub/trending"
+	"github.com/whitef0x0/TrendingGithub/twitter"
+	"github.com/whitef0x0/go-trending"
 )
 
 // TweetSearch is the main structure of this Bot.
@@ -98,7 +98,7 @@ func (ts *TweetSearch) SendProject(p trending.Project) {
 		// This is a really hack here ...
 		// We have to abstract this a little bit.
 		// Eieieieiei
-		repository, err := github.GetRepositoryDetails(p.Owner, p.RepositoryName)
+		project, err := github.GetProjectDetails(p.id)
 		if err != nil {
 			log.Printf("Error by retrieving repository details: %s", err)
 		}
@@ -152,7 +152,7 @@ func (ts *TweetSearch) FindProjectWithRandomProjectGenerator(getProject func() (
 
 	// Lets throw an error, when we dont get a project at all
 	// This happened in the past and the bot tweeted nothing.
-	// See https://github.com/andygrunwald/TrendingGithub/issues/12
+	// See https://github.com/whitef0x0/TrendingGithub/issues/12
 	if projectErr != nil {
 		log.Printf("Error by searching for a new project with random project generator: %s", projectErr)
 	}

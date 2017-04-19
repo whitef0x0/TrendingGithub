@@ -4,8 +4,8 @@ import (
 	"net/url"
 	"testing"
 
-	"github.com/andygrunwald/TrendingGithub/github"
-	"github.com/andygrunwald/go-trending"
+	"github.com/whitef0x0/TrendingGithub/github"
+	"github.com/whitef0x0/go-trending"
 )
 
 func TestTweets_IsProjectEmpty(t *testing.T) {
@@ -27,10 +27,10 @@ func TestTweets_IsProjectEmpty(t *testing.T) {
 }
 
 func TestTweets_BuildTweet(t *testing.T) {
-	owner := "andygrunwald"
+	owner := "whitef0x0"
 	repositoryName := "TrendingGithub"
 	projectName := owner + "/" + repositoryName
-	projectURL, _ := url.Parse("https://github.com/andygrunwald/TrendingGithub")
+	projectURL, _ := url.Parse("https://github.com/whitef0x0/TrendingGithub")
 	projectDescription := "A twitter bot (@TrendingGithub) to tweet trending repositories and developers from GitHub"
 
 	ts := TweetSearch{
@@ -53,7 +53,7 @@ func TestTweets_BuildTweet(t *testing.T) {
 			Description:    projectDescription + " and more and better and super duper text",
 			Language:       "Go",
 			URL:            projectURL,
-		}, "SuperDuperOwnerOrOrganisation/This-Is-A-Long-Project-Name-That-Will-Drop-The-Description-Of-The-Project ★123 https://github.com/andygrunwald/TrendingGithub #Go"},
+		}, "SuperDuperOwnerOrOrganisation/This-Is-A-Long-Project-Name-That-Will-Drop-The-Description-Of-The-Project ★123 https://github.com/whitef0x0/TrendingGithub #Go"},
 		{trending.Project{
 			Name:           projectName + "-cool-super-project",
 			Owner:          owner,
@@ -61,7 +61,7 @@ func TestTweets_BuildTweet(t *testing.T) {
 			Description:    projectDescription + " and more and better and super duper text",
 			Language:       "Go",
 			URL:            projectURL,
-		}, "andygrunwald/TrendingGithub-cool-super-project: A twitter bot (@TrendingGithub) to tweet trending... ★123 https://github.com/andygrunwald/TrendingGithub #Go"},
+		}, "whitef0x0/TrendingGithub-cool-super-project: A twitter bot (@TrendingGithub) to tweet trending... ★123 https://github.com/whitef0x0/TrendingGithub #Go"},
 		{trending.Project{
 			Name:           projectName,
 			Owner:          owner,
@@ -69,7 +69,7 @@ func TestTweets_BuildTweet(t *testing.T) {
 			Description:    projectDescription,
 			Language:       "Go",
 			URL:            projectURL,
-		}, "andygrunwald/TrendingGithub: A twitter bot (@TrendingGithub) to tweet trending repositories and developers... ★123 https://github.com/andygrunwald/TrendingGithub"},
+		}, "whitef0x0/TrendingGithub: A twitter bot (@TrendingGithub) to tweet trending repositories and developers... ★123 https://github.com/whitef0x0/TrendingGithub"},
 		{trending.Project{
 			Name:           projectName,
 			Owner:          owner,
@@ -77,14 +77,14 @@ func TestTweets_BuildTweet(t *testing.T) {
 			Description:    "Short description",
 			Language:       "Go Lang",
 			URL:            projectURL,
-		}, "andygrunwald/TrendingGithub: Short description ★123 https://github.com/andygrunwald/TrendingGithub #GoLang"},
+		}, "whitef0x0/TrendingGithub: Short description ★123 https://github.com/whitef0x0/TrendingGithub #GoLang"},
 		{trending.Project{
 			Name:           projectName,
 			Owner:          owner,
 			RepositoryName: repositoryName,
 			Description:    "Project without a URL",
 			Language:       "Go Lang",
-		}, "andygrunwald/TrendingGithub: Project without a URL ★123 #GoLang"},
+		}, "whitef0x0/TrendingGithub: Project without a URL ★123 #GoLang"},
 		{trending.Project{
 			Name:           repositoryName + "/" + repositoryName,
 			Owner:          repositoryName,
@@ -92,7 +92,7 @@ func TestTweets_BuildTweet(t *testing.T) {
 			Description:    projectDescription,
 			Language:       "Go",
 			URL:            projectURL,
-		}, "TrendingGithub: A twitter bot (@TrendingGithub) to tweet trending repositories and developers from GitHub ★123 https://github.com/andygrunwald/TrendingGithub #Go"},
+		}, "TrendingGithub: A twitter bot (@TrendingGithub) to tweet trending repositories and developers from GitHub ★123 https://github.com/whitef0x0/TrendingGithub #Go"},
 	}
 
 	for _, item := range mock {

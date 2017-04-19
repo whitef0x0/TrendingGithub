@@ -1,13 +1,13 @@
 # go-trending
 
-[![GoDoc](https://godoc.org/github.com/andygrunwald/go-trending?status.svg)](https://godoc.org/github.com/andygrunwald/go-trending)
-[![Build Status](https://travis-ci.org/andygrunwald/go-trending.svg?branch=master)](https://travis-ci.org/andygrunwald/go-trending)
-[![Go Report Card](https://goreportcard.com/badge/github.com/andygrunwald/go-trending)](https://goreportcard.com/report/github.com/andygrunwald/go-trending)
-[![Coverage Status](https://coveralls.io/repos/andygrunwald/go-trending/badge.svg?branch=master&service=github)](https://coveralls.io/github/andygrunwald/go-trending?branch=master)
+[![GoDoc](https://godoc.org/github.com/whitef0x0/go-trending?status.svg)](https://godoc.org/github.com/whitef0x0/go-trending)
+[![Build Status](https://travis-ci.org/whitef0x0/go-trending.svg?branch=master)](https://travis-ci.org/whitef0x0/go-trending)
+[![Go Report Card](https://goreportcard.com/badge/github.com/whitef0x0/go-trending)](https://goreportcard.com/report/github.com/whitef0x0/go-trending)
+[![Coverage Status](https://coveralls.io/repos/whitef0x0/go-trending/badge.svg?branch=master&service=github)](https://coveralls.io/github/whitef0x0/go-trending?branch=master)
 
 A package to retrieve [trending repositories](https://github.com/trending) and [developers](https://github.com/trending/developers) from Github written in [golang](https://golang.org/).
 
-[![trending package showcase](./img/go-trending-shrinked.png "trending package showcase")](https://raw.githubusercontent.com/andygrunwald/go-trending/master/img/go-trending-shrinked.png)
+[![trending package showcase](./img/go-trending-shrinked.png "trending package showcase")](https://raw.githubusercontent.com/whitef0x0/go-trending/master/img/go-trending-shrinked.png)
 
 This package were inspired by [rochefort/git-trend](https://github.com/rochefort/git-trend) (Ruby) and [sheharyarn/github-trending](https://github.com/sheharyarn/github-trending) (Ruby).
 
@@ -24,21 +24,21 @@ This package were inspired by [rochefort/git-trend](https://github.com/rochefort
 
 It is go gettable
 
-    $ go get github.com/andygrunwald/go-trending
+    $ go get github.com/whitef0x0/go-trending
 
 (optional) to run unit / example tests:
 
-    $ cd $GOPATH/src/github.com/andygrunwald/go-trending
+    $ cd $GOPATH/src/github.com/whitef0x0/go-trending
     $ go test -v
 
 ## API
 
-Please have a look at the [GoDoc documentation](https://godoc.org/github.com/andygrunwald/go-trending) for a detailed API description.
+Please have a look at the [GoDoc documentation](https://godoc.org/github.com/whitef0x0/go-trending) for a detailed API description.
 
 ## Examples
 
 Further a few examples how the API can be used.
-A few more examples are available in the [GoDoc examples section](https://godoc.org/github.com/andygrunwald/go-trending#pkg-examples).
+A few more examples are available in the [GoDoc examples section](https://godoc.org/github.com/whitef0x0/go-trending#pkg-examples).
 
 ### List trending repositories of today for all languages
 
@@ -47,7 +47,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/andygrunwald/go-trending"
+	"github.com/whitef0x0/go-trending"
 	"log"
 )
 
@@ -77,7 +77,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/andygrunwald/go-trending"
+	"github.com/whitef0x0/go-trending"
 	"log"
 )
 
@@ -107,7 +107,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/andygrunwald/go-trending"
+	"github.com/whitef0x0/go-trending"
 	"log"
 )
 
@@ -132,7 +132,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/andygrunwald/go-trending"
+	"github.com/whitef0x0/go-trending"
 	"log"
 )
 
@@ -155,7 +155,7 @@ func main() {
 ## Implementations
 
 * [sikang99/hub-trend](https://github.com/sikang99/hub-trend/)
-* [andygrunwald/TrendingGithub](https://github.com/andygrunwald/TrendingGithub) - [@TrendingGithub](https://twitter.com/TrendingGithub)
+* [whitef0x0/TrendingGithub](https://github.com/whitef0x0/TrendingGithub) - [@TrendingGithub](https://twitter.com/TrendingGithub)
 
 ## License
 

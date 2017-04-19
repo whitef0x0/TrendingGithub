@@ -1,5 +1,5 @@
 {
-	"ImportPath": "github.com/andygrunwald/TrendingGithub",
+	"ImportPath": "github.com/whitef0x0/TrendingGithub",
 	"GoVersion": "go1.7",
 	"GodepVersion": "v75",
 	"Deps": [
@@ -21,7 +21,7 @@
 			"Rev": "196d48ce4ae8cf1c8f87088d2884eca214240887"
 		},
 		{
-			"ImportPath": "github.com/andygrunwald/go-trending",
+			"ImportPath": "github.com/whitef0x0/go-trending",
 			"Rev": "41f32fdb94e7e3511503d2c8bab019c9e353fe81"
 		},
 		{
@@ -51,7 +51,7 @@
 			"Rev": "f8c71fc158ba13d50a7f5d8f10ea18ec49463c73"
 		},
 		{
-			"ImportPath": "github.com/google/go-github/github",
+			"ImportPath": "github.com/xanzy/go-gitlab",
 			"Rev": "dccec7b5f17234b8219494c2b5b03af034e08c04"
 		},
 		{
