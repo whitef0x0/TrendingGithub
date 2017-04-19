@@ -167,6 +167,8 @@ func (ts *TweetSearch) BuildTweet(p trending.Project, repo *github.Project) stri
 		tweet += usedName
 	}
 
+	stars := strconv.Itoa(p.Stars)
+
 	// We only post a description if we have more than 20 characters available
 	// We have to add 2 chars more, because of the prefix ": "
 	if tweetLen > 22 && len(p.Description) > 0 {
@@ -174,17 +176,16 @@ func (ts *TweetSearch) BuildTweet(p trending.Project, repo *github.Project) stri
 		tweet += ": "
 
 		projectDescription := ""
-		if len(p.Description) < tweetLen {
+		if len(p.Description) < (tweetLen - len(stars)) {
 			projectDescription = p.Description
 		} else {
-			projectDescription = Crop(p.Description, (tweetLen - 4), "...", true)
+			projectDescription = Crop(p.Description, (tweetLen - 4 - len(stars)), "...", true)
 		}
 
 		tweetLen -= len(projectDescription)
 		tweet += projectDescription
 	}
 
-	stars := strconv.Itoa(p.Stars)
 	if starsLen := len(stars) + 2; tweetLen >= starsLen {
 		tweet += " ★" + stars
 		tweetLen -= starsLen
