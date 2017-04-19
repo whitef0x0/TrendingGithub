@@ -39,7 +39,7 @@ func TestTweets_BuildTweet(t *testing.T) {
 
 	stars := 123
 	repository := &github.Project{
-		Stars: &(stars),
+		StarCount: stars,
 	}
 
 	mock := []struct {
@@ -47,46 +47,57 @@ func TestTweets_BuildTweet(t *testing.T) {
 		Result  string
 	}{
 		{trending.Project{
+			Stars: stars,
 			Name:           "SuperDuperOwnerOrOrganisation/This-Is-A-Long-Project-Name-That-Will-Drop-The-Description-Of-The-Project",
 			Owner:          "SuperDuperOwnerOrOrganisation",
 			RepositoryName: "This-Is-A-Long-Project-Name-That-Will-Drop-The-Description-Of-The-Project",
+			NameSpace: 		"superduper/long-project-name",
 			Description:    projectDescription + " and more and better and super duper text",
 			URL:            projectURL,
-		}, "SuperDuperOwnerOrOrganisation/This-Is-A-Long-Project-Name-That-Will-Drop-The-Description-Of-The-Project ★123 https://github.com/whitef0x0/TrendingGitlab #Go"},
+		}, "SuperDuperOwnerOrOrganisation/This-Is-A-Long-Project-Name-That-Will-Drop-The-Description-Of-The-Project ★123 https://github.com/whitef0x0/TrendingGitlab"},
 		{trending.Project{
+			Stars: stars,
 			Name:           projectName + "-cool-super-project",
 			Owner:          owner,
 			RepositoryName: repositoryName + "-cool-super-project",
+			NameSpace: 		"whitef0x0/repo-cool-super-project-name",
 			Description:    projectDescription + " and more and better and super duper text",
 			URL:            projectURL,
-		}, "whitef0x0/TrendingGitlab-cool-super-project: A twitter bot (@TrendingGitlab) to tweet trending... ★123 https://github.com/whitef0x0/TrendingGitlab #Go"},
+		}, "whitef0x0/TrendingGitlab-cool-super-project: A twitter bot (@TrendingGitlab) to tweet trending... ★123 https://github.com/whitef0x0/TrendingGitlab"},
 		{trending.Project{
+			Stars: stars,
 			Name:           projectName,
 			Owner:          owner,
 			RepositoryName: repositoryName,
+			NameSpace: 		owner+"/"+repositoryName,
 			Description:    projectDescription,
 			URL:            projectURL,
 		}, "whitef0x0/TrendingGitlab: A twitter bot (@TrendingGitlab) to tweet trending repositories and developers... ★123 https://github.com/whitef0x0/TrendingGitlab"},
 		{trending.Project{
+			Stars: stars,
 			Name:           projectName,
 			Owner:          owner,
 			RepositoryName: repositoryName,
+			NameSpace: 		owner+"/"+repositoryName,
 			Description:    "Short description",
 			URL:            projectURL,
-		}, "whitef0x0/TrendingGitlab: Short description ★123 https://github.com/whitef0x0/TrendingGitlab #GoLang"},
+		}, "whitef0x0/TrendingGitlab: Short description ★123 https://github.com/whitef0x0/TrendingGitlab"},
 		{trending.Project{
+			Stars: stars,
 			Name:           projectName,
 			Owner:          owner,
 			RepositoryName: repositoryName,
 			Description:    "Project without a URL",
-		}, "whitef0x0/TrendingGitlab: Project without a URL ★123 #GoLang"},
+		}, "whitef0x0/TrendingGitlab: Project without a URL ★123"},
 		{trending.Project{
+			Stars: stars,
 			Name:           repositoryName + "/" + repositoryName,
 			Owner:          repositoryName,
 			RepositoryName: repositoryName,
+			NameSpace: 		repositoryName+"/"+repositoryName,
 			Description:    projectDescription,
 			URL:            projectURL,
-		}, "TrendingGitlab: A twitter bot (@TrendingGitlab) to tweet trending repositories and developers from GitHub ★123 https://github.com/whitef0x0/TrendingGitlab #Go"},
+		}, "TrendingGitlab: A twitter bot (@TrendingGitlab) to tweet trending repositories and developers from GitHub ★123 https://github.com/whitef0x0/TrendingGitlab"},
 	}
 
 	for _, item := range mock {
