@@ -33,7 +33,7 @@ func main() {
 		twitterFollowNewPerson   = flags.Bool("twitter-follow-new-person", "TRENDINGGITHUB_TWITTER_FOLLOW_NEW_PERSON", false, "Twitter: Follows a friend of one of our followers. Env var: TRENDINGGITHUB_TWITTER_FOLLOW_NEW_PERSON")
 
 		// Timings
-		tweetTime                = flags.Duration("twitter-tweet-time", "TRENDINGGITHUB_TWITTER_TWEET_TIME", 5*time.Second, "Twitter: Time interval to search a new project and tweet it. Env var: TRENDINGGITHUB_TWITTER_TWEET_TIME")
+		tweetTime                = flags.Duration("twitter-tweet-time", "TRENDINGGITHUB_TWITTER_TWEET_TIME", 60*time.Minute, "Twitter: Time interval to search a new project and tweet it. Env var: TRENDINGGITHUB_TWITTER_TWEET_TIME")
 		configurationRefreshTime = flags.Duration("twitter-conf-refresh-time", "TRENDINGGITHUB_TWITTER_CONF_REFRESH_TIME", 24*time.Hour, "Twitter: Time interval to refresh the configuration of twitter (e.g. char length for short url). Env var: TRENDINGGITHUB_TWITTER_CONF_REFRESH_TIME")
 		followNewPersonTime      = flags.Duration("twitter-follow-new-person-time", "TRENDINGGITHUB_TWITTER_FOLLOW_NEW_PERSON_TIME", 45*time.Minute, "Growth hack: Time interval to search for a new person to follow. Env var: TRENDINGGITHUB_TWITTER_FOLLOW_NEW_PERSON_TIME")
 
@@ -55,7 +55,7 @@ func main() {
 
 	log.Println("Hey, nice to meet you. My name is @GitlabTrending. Lets get ready to tweet some trending content!")
 	defer log.Println("Nice sesssion. A lot of knowledge was tweeted. Good work and see you next time!")
-	
+
 	// Prepare the twitter client
 	twitterClient := twitter.NewClient(*twitterConsumerKey, *twitterConsumerSecret, *twitterAccessToken, *twitterAccessTokenSecret, *debugMode)
 
