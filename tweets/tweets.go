@@ -1,4 +1,4 @@
-package main
+package tweets
 
 import (
 	"log"
@@ -32,58 +32,39 @@ type Tweet struct {
 // GenerateNewTweet is responsible to search a new project / repository and build a new tweet based on this.
 // The generated tweet will be sent to tweetChan.
 func (ts *TweetSearch) GenerateNewTweet() {
+
 	var projectToTweet trending.Project
 
-	// Get timeframes and randomize them
-	timeFrames := ts.Trending.GetTimeFrames()
-	ShuffleStringSlice(timeFrames)
-
 	// First get the timeframes without any languages
-	projectToTweet = ts.TimeframeLoopToSearchAProject(timeFrames, "")
+	projectToTweet = ts.TimeframeLoopToSearchAProject()
 
 	// Check if we found a project. If yes tweet it.
 	if ts.IsProjectEmpty(projectToTweet) == false {
+
 		ts.SendProject(projectToTweet)
 		return
 	}
-
-	// If not, keep going and try to get some (trending) languages
-	languages := ts.Trending.GetTrendingLanguages()
-	ShuffleStringSlice(languages)
-	ShuffleStringSlice(timeFrames)
-
-	for _, language := range languages {
-		projectToTweet = ts.TimeframeLoopToSearchAProject(timeFrames, language)
-
-		// If we found a project, break this loop again.
-		if ts.IsProjectEmpty(projectToTweet) == false {
-			ts.SendProject(projectToTweet)
-			break
-		}
-	}
+	return 
 }
 
-// TimeframeLoopToSearchAProject provides basically a loop over incoming timeFrames (+ language)
+// TimeframeLoopToSearchAProject provides basically a way to find a random project
 // to try to find a new tweet.
 // You can say that this is nearly the <3 of this bot.
-func (ts *TweetSearch) TimeframeLoopToSearchAProject(timeFrames []string, language string) trending.Project {
+func (ts *TweetSearch) TimeframeLoopToSearchAProject() trending.Project {
 	var projectToTweet trending.Project
+		
+	log.Printf("Getting trending projects ")
 
-	for _, timeFrame := range timeFrames {
-		if len(language) > 0 {
-			log.Printf("Getting trending projects for timeframe \"%s\" and language \"%s\"", timeFrame, language)
-		} else {
-			log.Printf("Getting trending projects for timeframe \"%s\"", timeFrame)
-		}
+	i := 1
+	getProject := ts.Trending.GetRandomProjectGenerator(i)
+	projectToTweet = ts.FindProjectWithRandomProjectGenerator(getProject)
 
-		getProject := ts.Trending.GetRandomProjectGenerator(timeFrame, language)
+	// Check if we found a project.
+	// If yes we can leave the loop and keep on rockin
+	for ts.IsProjectEmpty(projectToTweet) && i < 5 {
+		
 		projectToTweet = ts.FindProjectWithRandomProjectGenerator(getProject)
-
-		// Check if we found a project.
-		// If yes we can leave the loop and keep on rockin
-		if ts.IsProjectEmpty(projectToTweet) == false {
-			break
-		}
+		i++
 	}
 
 	return projectToTweet
@@ -98,12 +79,12 @@ func (ts *TweetSearch) SendProject(p trending.Project) {
 		// This is a really hack here ...
 		// We have to abstract this a little bit.
 		// Eieieieiei
-		project, err := github.GetProjectDetails(p.id)
+		repositoryDetails, err := github.GetProjectDetails(p.NameSpace)
 		if err != nil {
 			log.Printf("Error by retrieving repository details: %s", err)
 		}
 
-		text = ts.BuildTweet(p, repository)
+		text = ts.BuildTweet(p, repositoryDetails)
 	}
 
 	tweet := &Tweet{
@@ -161,7 +142,7 @@ func (ts *TweetSearch) FindProjectWithRandomProjectGenerator(getProject func() (
 }
 
 // BuildTweet is responsible to build a 140 length string based on the project we found.
-func (ts *TweetSearch) BuildTweet(p trending.Project, repo *github.Repository) string {
+func (ts *TweetSearch) BuildTweet(p trending.Project, repo *github.Project) string {
 	tweet := ""
 	// Base length of a tweet
 	tweetLen := 140
@@ -186,7 +167,7 @@ func (ts *TweetSearch) BuildTweet(p trending.Project, repo *github.Repository) s
 		tweet += usedName
 	}
 
-	// We only post a description if we got more than 20 charactes available
+	// We only post a description if we have more than 20 characters available
 	// We have to add 2 chars more, because of the prefix ": "
 	if tweetLen > 22 && len(p.Description) > 0 {
 		tweetLen -= 2
@@ -203,7 +184,7 @@ func (ts *TweetSearch) BuildTweet(p trending.Project, repo *github.Repository) s
 		tweet += projectDescription
 	}
 
-	stars := strconv.Itoa(*repo.StargazersCount)
+	stars := strconv.Itoa(p.Stars)
 	if starsLen := len(stars) + 2; tweetLen >= starsLen {
 		tweet += " ★" + stars
 		tweetLen -= starsLen
@@ -214,18 +195,6 @@ func (ts *TweetSearch) BuildTweet(p trending.Project, repo *github.Repository) s
 	if p.URL != nil {
 		tweet += " "
 		tweet += p.URL.String()
-	}
-
-	// Lets check if we got space left to add the language as hashtag
-	language := strings.Replace(p.Language, " ", "", -1)
-	// len + 2, because of " #" in front of the hashtag
-	hashTagLen := (len(language) + 2)
-	if len(language) > 0 && tweetLen >= hashTagLen {
-		tweet += " #" + language
-
-		// When we want to do something more with the tweet we have to calculate the tweetLen further.
-		// So if you want to add more features to the tweet, put this line below into production.
-		// tweetLen -= hashTagLen
 	}
 
 	return tweet
@@ -275,6 +244,7 @@ func StartTweeting(twitter *twitter.Twitter, storageBackend storage.Pool, tweetT
 		// we will return here
 		// We do this check here and not in tweets.go, because otherwise
 		// a new tweet won`t be scheduled
+
 		if len(tweet.ProjectName) <= 0 {
 			log.Println("No project found. No tweet sent.")
 			continue
@@ -303,6 +273,7 @@ func StartTweeting(twitter *twitter.Twitter, storageBackend storage.Pool, tweetT
 func SetupRegularTweetSearchProcess(tweetSearch *TweetSearch, d time.Duration) {
 	go func() {
 		for range time.Tick(d) {
+			log.Printf("Project search and tweet interval: Every %s\n", d.String())
 			go tweetSearch.GenerateNewTweet()
 		}
 	}()
