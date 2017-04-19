@@ -1,9 +1,9 @@
 # [@TrendingGitlab](https://twitter.com/TrendingGitlab)
 
-[![Build Status](https://travis-ci.org/whitef0x0/TrendingGithub.svg?branch=master)](https://travis-ci.org/whitef0x0/TrendingGithub)
-[![GoDoc](https://godoc.org/github.com/whitef0x0/TrendingGithub?status.svg)](https://godoc.org/github.com/whitef0x0/TrendingGithub)
-[![Coverage Status](https://coveralls.io/repos/whitef0x0/TrendingGithub/badge.svg?branch=master&service=github)](https://coveralls.io/github/whitef0x0/TrendingGithub?branch=master)
-[![Go Report Card](https://goreportcard.com/badge/github.com/whitef0x0/TrendingGithub)](https://goreportcard.com/report/github.com/whitef0x0/TrendingGithub)
+[![Build Status](https://travis-ci.org/whitef0x0/TrendingGitlab.svg?branch=master)](https://travis-ci.org/whitef0x0/TrendingGithub)
+[![GoDoc](https://godoc.org/github.com/whitef0x0/TrendingGitlab?status.svg)](https://godoc.org/github.com/whitef0x0/TrendingGithub)
+[![Coverage Status](https://coveralls.io/repos/whitef0x0/TrendingGitlab/badge.svg?branch=master&service=github)](https://coveralls.io/github/whitef0x0/TrendingGitlab?branch=master)
+[![Go Report Card](https://goreportcard.com/badge/github.com/whitef0x0/TrendingGitlab)](https://goreportcard.com/report/github.com/whitef0x0/TrendingGitlab)
 
 A twitter bot (**[@TrendingGitlab](https://twitter.com/TrendingGitlab)**) to tweet [trending repositories](https://gitlab.com/explore/projects/trending) from GitLab.
 
