@@ -33,7 +33,7 @@ func main() {
 		twitterFollowNewPerson   = flags.Bool("twitter-follow-new-person", "TrendingGitlab_TWITTER_FOLLOW_NEW_PERSON", false, "Twitter: Follows a friend of one of our followers. Env var: TrendingGitlab_TWITTER_FOLLOW_NEW_PERSON")
 
 		// Timings
-		tweetTime                = flags.Duration("twitter-tweet-time", "TrendingGitlab_TWITTER_TWEET_TIME", 60*time.Minute, "Twitter: Time interval to search a new project and tweet it. Env var: TrendingGitlab_TWITTER_TWEET_TIME")
+		tweetTime                = flags.Duration("twitter-tweet-time", "TrendingGitlab_TWITTER_TWEET_TIME", 1*time.Second, "Twitter: Time interval to search a new project and tweet it. Env var: TrendingGitlab_TWITTER_TWEET_TIME")
 		configurationRefreshTime = flags.Duration("twitter-conf-refresh-time", "TrendingGitlab_TWITTER_CONF_REFRESH_TIME", 24*time.Hour, "Twitter: Time interval to refresh the configuration of twitter (e.g. char length for short url). Env var: TrendingGitlab_TWITTER_CONF_REFRESH_TIME")
 		followNewPersonTime      = flags.Duration("twitter-follow-new-person-time", "TrendingGitlab_TWITTER_FOLLOW_NEW_PERSON_TIME", 45*time.Minute, "Growth hack: Time interval to search for a new person to follow. Env var: TrendingGitlab_TWITTER_FOLLOW_NEW_PERSON_TIME")
 
