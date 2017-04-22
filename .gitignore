@@ -27,9 +27,9 @@ _testmain.go
 *.prof
 
 # Application
-TrendingGithub
+TrendingGitlab
 /config.json
 
 # Application release
-TrendingGithub-v*
+TrendingGitlab-v*
 release/

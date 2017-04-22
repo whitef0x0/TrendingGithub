@@ -1,17 +1,15 @@
-# [@TrendingGithub](https://twitter.com/TrendingGithub)
+# [@TrendingGitlab](https://twitter.com/TrendingGitlab)
 
-[![Build Status](https://travis-ci.org/whitef0x0/TrendingGithub.svg?branch=master)](https://travis-ci.org/whitef0x0/TrendingGithub)
-[![GoDoc](https://godoc.org/github.com/whitef0x0/TrendingGithub?status.svg)](https://godoc.org/github.com/whitef0x0/TrendingGithub)
-[![Coverage Status](https://coveralls.io/repos/whitef0x0/TrendingGithub/badge.svg?branch=master&service=github)](https://coveralls.io/github/whitef0x0/TrendingGithub?branch=master)
-[![Go Report Card](https://goreportcard.com/badge/github.com/whitef0x0/TrendingGithub)](https://goreportcard.com/report/github.com/whitef0x0/TrendingGithub)
+[![Build Status](https://travis-ci.org/whitef0x0/TrendingGitlab.svg?branch=master)](https://travis-ci.org/whitef0x0/TrendingGitlab)
+[![GoDoc](https://godoc.org/github.com/whitef0x0/TrendingGitlab?status.svg)](https://godoc.org/github.com/whitef0x0/TrendingGitlab)
+[![Coverage Status](https://coveralls.io/repos/whitef0x0/TrendingGitlab/badge.svg?branch=master&service=github)](https://coveralls.io/github/whitef0x0/TrendingGitlab?branch=master)
+[![Go Report Card](https://goreportcard.com/badge/github.com/whitef0x0/TrendingGitlab)](https://goreportcard.com/report/github.com/whitef0x0/TrendingGitlab)
 
-A twitter bot (**[@TrendingGithub](https://twitter.com/TrendingGithub)**) to tweet [trending repositories](https://github.com/trending) and [developers](https://github.com/trending/developers) from GitHub.
+A twitter bot (**[@TrendingGitlab](https://twitter.com/TrendingGitlab)**) to tweet [trending repositories](https://gitlab.com/explore/projects/trending) from GitLab.
 
-> Follow us at **[@TrendingGithub](https://twitter.com/TrendingGithub)**.
+> Follow us at **[@TrendingGitlab](https://twitter.com/TrendingGitlab)**.
 
-[![@TrendingGithub twitter account](./img/TrendingGithub.png "@TrendingGithub twitter account")](https://twitter.com/TrendingGithub)
-
-**Important:** This is no official GitHub or Twitter product.
+**Important:** This is not an official GitLab or Twitter product.
 
 ## Features
 
@@ -24,24 +22,24 @@ A twitter bot (**[@TrendingGithub](https://twitter.com/TrendingGithub)**) to twe
 
 ## Installation
 
-1. Download the [latest release](https://github.com/whitef0x0/TrendingGithub/releases/latest)
+1. Download the [latest release](https://github.com/whitef0x0/TrendingGitlab/releases/latest)
 2. Extract the archive (zip / tar.gz)
-3. Start the bot via `./TrendingGithub -debug`
+3. Start the bot via `./TrendingGitlab -debug`
 
 For linux this can look like:
 
 ```sh
-curl -L  https://github.com/whitef0x0/TrendingGithub/releases/download/v0.4.0/TrendingGithub-v0.4.0-linux-amd64.tar.gz -o TrendingGithub-v0.4.0-linux-amd64.tar.gz
-tar xzvf TrendingGithub-v0.4.0-linux-amd64.tar.gz
-cd TrendingGithub-v0.4.0-linux-amd64
-./TrendingGithub -debug
+curl -L  https://github.com/whitef0x0/TrendingGitlab/releases/download/v0.4.0/TrendingGitlab-v0.4.0-linux-amd64.tar.gz -o TrendingGitlab-v0.4.0-linux-amd64.tar.gz
+tar xzvf TrendingGitlab-v0.4.0-linux-amd64.tar.gz
+cd TrendingGitlab-v0.4.0-linux-amd64
+./TrendingGitlab -debug
 ```
 
 ## Usage
 
 ```
-$ ./TrendingGithub -help
-Usage of ./TrendingGithub:
+$ go run main.go
+Usage of go run main.go
   -debug
     	Outputs the tweet instead of tweet it (useful for development). Env var: TRENDINGGITHUB_DEBUG
   -expvar-port int
@@ -100,7 +98,7 @@ We implemented a small growth hack to get a few followers.
 This hack was suggested by my colleague [@mre](https://github.com/mre).
 It works like described:
 
-* Get all followers from [@TrendingGithub](https://twitter.com/TrendingGithub)
+* Get all followers from [@TrendingGitlab](https://twitter.com/TrendingGitlab)
 * Choose a random one and get the followers of the choosen person
 * Check if this person follows us already
 * If yes, repeat
@@ -111,9 +109,7 @@ This feature can be activated via the `twitter-follow-new-person` flag.
 ## Motivation
 
 I love to discover new tools, new projects, new languages, new coding best practices, new exciting ideas and new people who share the same passion like me.
-[I use twitter a lot](https://twitter.com/whitef0x0) and have little time to check [trending repositories](https://github.com/trending) and [developers](https://github.com/trending/developers) on a daily basis.
-
-Why not combine both to save time and spread favorite projects and developers via tweets?
+[I use twitter a lot](https://twitter.com/magic_cacti) and wanted to have a place to check [trending repositories](https://gitlab.com/explore/projects/trending) on GitLab as there seemed to be no bot or service currently doing this.
 
 ## License
 
