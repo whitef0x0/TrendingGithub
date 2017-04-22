@@ -5,7 +5,7 @@ import (
 )
 
 var (
-	redisTestProjectName = "whitef0x0/TrendingGithub"
+	redisTestProjectName = "whitef0x0/TrendingGitlab"
 )
 
 func TestRedis_Get_FailedConnection(t *testing.T) {

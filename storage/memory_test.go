@@ -5,7 +5,7 @@ import (
 )
 
 var (
-	memoryTestProjectName = "whitef0x0/TrendingGithub"
+	memoryTestProjectName = "whitef0x0/TrendingGitlab"
 )
 
 func TestMemory_MarkRepositoryAsTweeted(t *testing.T) {
