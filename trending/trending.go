@@ -34,7 +34,7 @@ func (t *Trend) GetRandomProjectGenerator(numPages int) func() (trending.Project
 	var projects []trending.Project
 	var err error
 
-	// Get 1000 most recent trending projects
+	// Get most recent trending projects in numPages
 	projects, err = t.Client.GetProjects(numPages)
 	if err != nil {
 		return func() (trending.Project, error) {
