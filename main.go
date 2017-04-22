@@ -1,7 +1,8 @@
 package main
 
 import (
-	"flag"
+	"os"
+    "flag"
 	"fmt"
 	"log"
 	"time"
@@ -19,6 +20,15 @@ const (
 )
 
 func main() {
+    
+    errLogFile, errOpeningErrLogFile := os.OpenFile("./logs/go_err.log", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600)
+    if errOpeningErrLogFile != nil {
+        log.Fatal("Error opening go_err.log file: %v", errOpeningErrLogFile)
+    }   
+    defer errLogFile.Close()
+    
+    log.SetOutput(errLogFile)
+   
 	envErr := godotenv.Load()
 	if envErr != nil {
 		log.Fatal("Error loading .env file")
@@ -33,7 +43,7 @@ func main() {
 		twitterFollowNewPerson   = flags.Bool("twitter-follow-new-person", "TRENDINGGITHUB_TWITTER_FOLLOW_NEW_PERSON", false, "Twitter: Follows a friend of one of our followers. Env var: TRENDINGGITHUB_TWITTER_FOLLOW_NEW_PERSON")
 
 		// Timings
-		tweetTime                = flags.Duration("twitter-tweet-time", "TRENDINGGITHUB_TWITTER_TWEET_TIME", 5*time.Second, "Twitter: Time interval to search a new project and tweet it. Env var: TRENDINGGITHUB_TWITTER_TWEET_TIME")
+		tweetTime                = flags.Duration("twitter-tweet-time", "TRENDINGGITHUB_TWITTER_TWEET_TIME", 120*time.Minute, "Twitter: Time interval to search a new project and tweet it. Env var: TRENDINGGITHUB_TWITTER_TWEET_TIME")
 		configurationRefreshTime = flags.Duration("twitter-conf-refresh-time", "TRENDINGGITHUB_TWITTER_CONF_REFRESH_TIME", 24*time.Hour, "Twitter: Time interval to refresh the configuration of twitter (e.g. char length for short url). Env var: TRENDINGGITHUB_TWITTER_CONF_REFRESH_TIME")
 		followNewPersonTime      = flags.Duration("twitter-follow-new-person-time", "TRENDINGGITHUB_TWITTER_FOLLOW_NEW_PERSON_TIME", 45*time.Minute, "Growth hack: Time interval to search for a new person to follow. Env var: TRENDINGGITHUB_TWITTER_FOLLOW_NEW_PERSON_TIME")
 
@@ -41,7 +51,7 @@ func main() {
 		storageURL  = flags.String("storage-url", "TRENDINGGITHUB_STORAGE_URL", ":6379", "Storage URL (e.g. 1.2.3.4:6379 or :6379). Env var: TRENDINGGITHUB_STORAGE_URL")
 		storageAuth = flags.String("storage-auth", "TRENDINGGITHUB_STORAGE_AUTH", "", "Storage Auth (e.g. myPassword or <empty>). Env var: TRENDINGGITHUB_STORAGE_AUTH")
 
-		expVarPort  = flags.Int("expvar-port", "TRENDINGGITHUB_EXPVAR_PORT", 8123, "Port which will be used for the expvar TCP server. Env var: TRENDINGGITHUB_EXPVAR_PORT")
+		expVarPort  = flags.Int("expvar-port", "TRENDINGGITHUB_EXPVAR_PORT", 8311, "Port which will be used for the expvar TCP server. Env var: TRENDINGGITHUB_EXPVAR_PORT")
 		showVersion = flags.Bool("version", "TRENDINGGITHUB_VERSION", false, "Outputs the version number and exit. Env var: TRENDINGGITHUB_VERSION")
 		debugMode   = flags.Bool("debug", "TRENDINGGITHUB_DEBUG", false, "Outputs the tweet instead of tweet it (useful for development). Env var: TRENDINGGITHUB_DEBUG")
 	)

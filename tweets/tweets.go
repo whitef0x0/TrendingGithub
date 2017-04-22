@@ -55,18 +55,19 @@ func (ts *TweetSearch) TimeframeLoopToSearchAProject() trending.Project {
 		
 	log.Printf("Getting trending projects ")
 
-	i := 1
-	getProject := ts.Trending.GetRandomProjectGenerator(i)
+	//i := 1
+	getProject := ts.Trending.GetRandomProjectGenerator(5)
 	projectToTweet = ts.FindProjectWithRandomProjectGenerator(getProject)
 
 	// Check if we found a project.
 	// If yes we can leave the loop and keep on rockin
-	for ts.IsProjectEmpty(projectToTweet) && i < 5 {
-		
+	/*
+    for ts.IsProjectEmpty(projectToTweet) && i < 5 {
+	    getProject = ts.Trending.GetRandomProjectGenerator(i)	
 		projectToTweet = ts.FindProjectWithRandomProjectGenerator(getProject)
 		i++
 	}
-
+    */
 	return projectToTweet
 }
 
